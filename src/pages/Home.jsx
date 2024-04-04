@@ -4,9 +4,21 @@ import Navbar from "../components/Navbar";
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa6";
 import QZone from "../components/QZone";
 import bg from '../assets/bg1.png'
+import news1 from '../assets/1.png'
+import { useEffect, useState } from "react";
 
 
 export default function Home() {
+    const [categories, setCatagories] = useState([])
+    const [news, setNews] = useState([])
+    useEffect(() => {
+        fetch('categories.json')
+            .then(res => res.json())
+            .then(data => setCatagories(data))
+        fetch('news.json')
+            .then(res => res.json())
+            .then(data => setNews(data))
+    }, [])
     return (
         <div className="p-4">
             <Header></Header>
@@ -19,8 +31,31 @@ export default function Home() {
             </div>
             <Navbar></Navbar>
             <div className="grid grid-cols-4 gap-6 mt-9">
-                <div className="">letf</div>
-                <div className="col-span-2 border"> middle</div>
+                {/* left */}
+                <div className="">
+                    <div className="">
+                        <h2 className="text-2xl font-bold mb-8">All Caterogy</h2>
+                        <ul className="ml-4">
+                            {
+                                categories.map((catagori) => {
+                                    return (
+                                        <li key={catagori.id}><a className="text-xl block text-[#9F9F9F] hover:text-[#403F3F] hover:bg-[#E7E7E7] px-10 py-4 rounded" href="" target="_blank" rel="noopener noreferrer">{catagori.name}</a></li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                    <div className="">
+                        <img className="w-full" src={news1} alt="" />
+                        <h4 className="text-xl text-[#403F3F] my-4">Bayern Slams Authorities Over Flight Delay to Club World Cup</h4>
+                    </div>
+                </div>
+                {/* middle */}
+                <div className="col-span-2 ">
+                    <h2 className="text-2xl font-bold mb-8 p-4">Dragon News Home</h2>
+
+                </div>
+                {/* right */}
                 <div className="">
                     <h3 className="text-xl font-bold my-4">Login With</h3>
                     <div className="flex flex-col gap-4">

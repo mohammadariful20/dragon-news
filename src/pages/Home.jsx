@@ -6,6 +6,7 @@ import QZone from "../components/QZone";
 import bg from '../assets/bg1.png'
 import news1 from '../assets/1.png'
 import { useEffect, useState } from "react";
+import News from "../components/News";
 
 
 export default function Home() {
@@ -53,7 +54,11 @@ export default function Home() {
                 {/* middle */}
                 <div className="col-span-2 ">
                     <h2 className="text-2xl font-bold mb-8 p-4">Dragon News Home</h2>
-
+                            {
+                                news.map((item)=>{
+                                    return <News key={item.id} item={item}></News>
+                                })
+                            }
                 </div>
                 {/* right */}
                 <div className="">

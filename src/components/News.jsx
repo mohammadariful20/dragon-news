@@ -18,7 +18,7 @@ export default function News({ item }) {
                     <CiShare2/>
                 </div>
             </div>
-            <h2 className="card-title">
+            <h2 className="card-title mb-6">
                 {title}
                 <div className="badge badge-secondary">NEW</div>
             </h2>

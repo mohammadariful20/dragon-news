@@ -3,7 +3,7 @@ import { CiBookmark, CiShare2 } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
 export default function News({ item }) {
-    const { image_url, title, details, rating, total_view ,author} = item;
+    const { image_url, title, details, rating, total_view ,author,_id} = item;
     return (
         <div className="card bg-base-100 shadow-xl my-10    ">
             <div className="flex items-center justify-between my-10">
@@ -26,7 +26,7 @@ export default function News({ item }) {
             <figure><img className="w-full" src={image_url} alt="Shoes" /></figure>
             <div className="card-body">
                 {
-                    details.length>200?<p>{details.slice(0,200)}<Link className="text-red-600 font-bold">  Read More....</Link></p>:<p>{details}</p>
+                    details.length>200?<p>{details.slice(0,200)}<Link to={`/news/${_id}`} className="text-red-600 font-bold">  Read More....</Link></p>:<p>{details}</p>
                 }
                 <div className="card-actions  flex justify-between items-center">
                     <div className=" flex items-center gap-4 my-8">

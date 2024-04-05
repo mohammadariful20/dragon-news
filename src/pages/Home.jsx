@@ -5,6 +5,8 @@ import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-ic
 import QZone from "../components/QZone";
 import bg from '../assets/bg1.png'
 import news1 from '../assets/1.png'
+import news2 from '../assets/2.png'
+import news3 from '../assets/3.png'
 import { useEffect, useState } from "react";
 import News from "../components/News";
 import { useLoaderData } from 'react-router-dom'
@@ -45,8 +47,16 @@ export default function Home() {
                             }
                         </ul>
                     </div>
-                    <div className="">
+                    <div className="my-8">
                         <img className="w-full" src={news1} alt="" />
+                        <h4 className="text-xl text-[#403F3F] my-4">Bayern Slams Authorities Over Flight Delay to Club World Cup</h4>
+                    </div>
+                    <div className="my-8">
+                        <img className="w-full" src={news2} alt="" />
+                        <h4 className="text-xl text-[#403F3F] my-4">Bayern Slams Authorities Over Flight Delay to Club World Cup</h4>
+                    </div>
+                    <div className="my-8">
+                        <img className="w-full" src={news3} alt="" />
                         <h4 className="text-xl text-[#403F3F] my-4">Bayern Slams Authorities Over Flight Delay to Club World Cup</h4>
                     </div>
                 </div>

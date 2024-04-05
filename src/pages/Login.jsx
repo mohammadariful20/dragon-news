@@ -6,8 +6,8 @@ export default function Login() {
     return (
         <>
             <Navbar></Navbar>
-            <div className="min-h-svh  relative">
-                <div className="card shrink-0 w-full max-w-2xl shadow-2xl bg-base-100  absolute top-1/4 left-1/4 py-10">
+            <div className="max-h-svh  relative">
+                <div className="card shrink-0 w-full max-w-2xl shadow-2xl bg-base-100  absolute top-32 left-1/4 py-10">
                     <h1 className="text-center text-5xl font-bold">Login your account</h1>
                     <form className="card-body">
                         <div className="form-control">

@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 
 
 export default function Register() {
-    const handleRegister = (e) => {
+    const handleRegister = (e) => { 
       e.preventDefault()
       const form=new FormData(e.currentTarget)
       const name =form.get('name')
@@ -11,7 +11,7 @@ export default function Register() {
       const email =form.get('email')
       const password =form.get('password')
       const confirmpassword =form.get('confirmpassword')
-      
+
       console.log(name,photo,email,password,confirmpassword)
     }
     

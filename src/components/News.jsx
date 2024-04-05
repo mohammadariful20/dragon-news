@@ -1,5 +1,6 @@
 import { FaEye } from "react-icons/fa6";
 import { CiBookmark, CiShare2 } from "react-icons/ci";
+import { Link } from "react-router-dom";
 
 export default function News({ item }) {
     const { image_url, title, details, rating, total_view ,author} = item;
@@ -24,7 +25,9 @@ export default function News({ item }) {
             </h2>
             <figure><img className="w-full" src={image_url} alt="Shoes" /></figure>
             <div className="card-body">
-                <p>{details}</p>
+                {
+                    details.length>200?<p>{details.slice(0,200)}<Link className="text-red-600 font-bold">  Read More....</Link></p>:<p>{details}</p>
+                }
                 <div className="card-actions  flex justify-between items-center">
                     <div className=" flex items-center gap-4 my-8">
                         <div className="rating">

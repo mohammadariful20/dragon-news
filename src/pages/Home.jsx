@@ -7,18 +7,17 @@ import bg from '../assets/bg1.png'
 import news1 from '../assets/1.png'
 import { useEffect, useState } from "react";
 import News from "../components/News";
+import { useLoaderData } from 'react-router-dom'
 
 
 export default function Home() {
     const [categories, setCatagories] = useState([])
-    const [news, setNews] = useState([])
+    // const [news, setNews] = useState([])
+    const news = useLoaderData()
     useEffect(() => {
         fetch('categories.json')
             .then(res => res.json())
             .then(data => setCatagories(data))
-        fetch('news.json')
-            .then(res => res.json())
-            .then(data => setNews(data))
     }, [])
     return (
         <div className="p-4">
@@ -54,11 +53,11 @@ export default function Home() {
                 {/* middle */}
                 <div className="col-span-2 ">
                     <h2 className="text-2xl font-bold mb-8 p-4">Dragon News Home</h2>
-                            {
-                                news.map((item)=>{
-                                    return <News key={item.id} item={item}></News>
-                                })
-                            }
+                    {
+                        news.map((item) => {
+                            return <News key={item.id} item={item}></News>
+                        })
+                    }
                 </div>
                 {/* right */}
                 <div className="">

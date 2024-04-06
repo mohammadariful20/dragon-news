@@ -7,23 +7,46 @@ import bg from '../assets/bg1.png'
 import news1 from '../assets/1.png'
 import news2 from '../assets/2.png'
 import news3 from '../assets/3.png'
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import News from "../components/News";
 import { useLoaderData } from 'react-router-dom'
+import { AuthContext } from "../authProvider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Home() {
+    const { loginWithGoogle, loginWithgithub } = useContext(AuthContext)
     const [categories, setCatagories] = useState([])
     // const [news, setNews] = useState([])
     const news = useLoaderData()
+
     useEffect(() => {
         fetch('categories.json')
             .then(res => res.json())
             .then(data => setCatagories(data))
     }, [])
+
+
+    const handleGoogleSignin = () => {
+        loginWithGoogle()
+            .then(result => {
+                toast('SignIn Successfull')
+            })
+            .catch(err => toast.error(err.message))
+    }
+    const handleGithubSignin = () => {
+        loginWithgithub()
+            .then(result => {
+                toast('SignIn Successfull')
+            })
+            .catch(err => toast.error(err.message))
+    }
+
     return (
         <div className="p-4">
             <Header></Header>
+            <ToastContainer />
             <div className="flex">
                 <button className="btn btn-active btn-secondary text-white px-8">Latest</button>
                 <Marquee speed={100} className="text-black">
@@ -73,11 +96,11 @@ export default function Home() {
                 <div className="">
                     <h3 className="text-xl font-bold my-4">Login With</h3>
                     <div className="flex flex-col gap-4">
-                        <button className="btn text-green-700">
+                        <button onClick={handleGoogleSignin} className="btn text-green-700">
                             <FaGoogle />
                             Login with Google
                         </button>
-                        <button className="btn">
+                        <button onClick={handleGithubSignin} className="btn">
                             <FaGithub />
                             Login with Github
                         </button>
